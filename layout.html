@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <div class="d-flex">
+        <aside class="sidebar vh-100 border-end pt-3 d-flex bg-white flex-column">
+            <div class="px-4">
+                <strong>六角西餐廳</strong>
+                -後台管理
+            </div>
+            <div class="overflow-auto mt-3">
+                <div>
+                    <a href="/home.html" class="sidebar-link">
+                        <div class="px-4">
+                            <i class="bi bi-house me-2"></i>首頁
+                        </div>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="#menu-order" class="sidebar-link" data-bs-toggle="collapse">
+                        <div class="d-flex justify-content-between px-4">
+                            <p class="mb-0">
+                                <i class="bi bi-receipt me-2"></i>訂單管理
+                            </p>
+                            <i class="bi bi-caret-down"></i>
+                        </div>
+                    </a>
+                    <div class="collapse" id="menu-order">
+                        <a href="/orders.html" class="sidebar-link">
+                            <div class="ps-5">訂單列表</div>
+                        </a>
+                        <a href="/order.html" class="sidebar-link">
+                            <div class="ps-5">單一訂單細節</div>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <a href="/" class="sidebar-link">
+                        <div class="px-4">
+                            <i class="bi bi-list-ul  me-2"></i>參考連結
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a href="/" class="sidebar-link">
+                        <div class="px-4">
+                            <i class="bi bi-list-ul  me-2"></i>參考連結
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a href="/" class="sidebar-link">
+                        <div class="px-4">
+                            <i class="bi bi-list-ul  me-2"></i>參考連結
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a href="/" class="sidebar-link">
+                        <div class="px-4">
+                            <i class="bi bi-list-ul  me-2"></i>參考連結
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a href="/" class="sidebar-link">
+                        <div class="px-4">
+                            <i class="bi bi-list-ul  me-2"></i>參考連結
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <a href="#" class="mt-auto sidebar-link border-top">
+                <div class="px-4">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>登出
+                </div>
+            </a>
+        </aside>
+        <main class="main">
+            <div class="bg-white w-100 border-bottom sticky-top">
+                <a href="#" class="d-inline-block py-3 px-4 border-end" id="toggle-btn"><i
+                        class="bi bi-arrows-angle-expand"></i></a>
+            </div>
+            <div class="p-4">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                (() => {
+                    const chartColors = {
+                        red: 'rgb(255, 99, 132)',
+                        orange: 'rgb(255, 159, 64)',
+                        yellow: 'rgb(255, 205, 86)',
+                        green: 'rgb(75, 192, 192)',
+                        blue: 'rgb(54, 162, 235)',
+                        purple: 'rgb(153, 102, 255)',
+                        grey: 'rgb(201, 203, 207)'
+                    };
+
+                    const randomScalingFactor = () => Math.round(Math.random() * 2000000);
+
+                    const pieCtx = document.getElementById('pie-chart')?.getContext('2d');
+                    const barCtx = document.getElementById('bar-chart')?.getContext('2d');
+
+                    if (!pieCtx || !barCtx) return;
+
+                    // ✅ pie：labels/data/顏色都統一 5 筆
+                    const pieConfig = {
+                        type: 'pie',
+                        data: {
+                            labels: [
+                                '大麥克全餐',
+                                '肥宅快樂水',
+                                '太爽啦義大利麵',
+                                '薯條加大吃不完',
+                                '兒童餐椅不給坐',
+                            ],
+                            datasets: [{
+                                label: 'Dataset 1',
+                                data: [
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                ],
+                                backgroundColor: [
+                                    chartColors.red,
+                                    chartColors.orange,
+                                    chartColors.yellow,
+                                    chartColors.green,
+                                    chartColors.blue,
+                                ],
+                            }]
+                        },
+                        options: { responsive: true }
+                    };
+
+                    const barConfig = {
+                        type: 'bar',
+                        data: {
+                            labels: ['一月', '二月', '三月', '四月', '五月', '六月'],
+                            datasets: [{
+                                label: 'Dataset 1',
+                                data: [
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                ],
+                                backgroundColor: [
+                                    chartColors.red,
+                                    chartColors.orange,
+                                    chartColors.yellow,
+                                    chartColors.green,
+                                    chartColors.blue,
+                                    chartColors.purple,
+                                ]
+                            }]
+                        },
+                        options: { responsive: true }
+                    };
+
+                    new Chart(pieCtx, pieConfig);
+                    new Chart(barCtx, barConfig);
+                })();
+            </script>
+
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="./js/all.js"></script>
+</body>
+
+</html>
