@@ -5,27 +5,30 @@ toggleMenuBtn.addEventListener("click", (e) => {
   body.classList.toggle("sidebar-toggled");
 });
 document.addEventListener("DOMContentLoaded", () => {
-  const currentPath = window.location.pathname.replace(/\/$/, "");
-  const links = document.querySelectorAll(".sidebar-link");
+  const current = location.pathname.split("/").pop() || "home.html";
 
-  links.forEach((link) => {
-    const href = link.getAttribute("href");
-    if (!href) return;
+  // 清除舊 active
+  document.querySelectorAll(".sidebar .sidebar-link.active")
+    .forEach(el => el.classList.remove("active"));
 
-    // 排除容易誤判的連結
-    if (href === "#" || href === "/" || href.startsWith("javascript")) return;
+  // 只處理真正導向 html 的連結
+  const links = document.querySelectorAll(
+    '.sidebar a.sidebar-link[href]:not([href^="#"])'
+  );
 
-    const targetPath = href.replace(/\/$/, "");
+  links.forEach((a) => {
+    const href = a.getAttribute("href");
+    const file = href.split("/").pop();
 
-    if (currentPath === targetPath) {
-      // ✅ 只給子項 active
-      link.classList.add("active");
+    if (file === current) {
+      a.classList.add("active");
 
-      // ✅ 只展開 collapse，不給上層 active
-      const collapseEl = link.closest(".collapse");
-      if (collapseEl) {
-        collapseEl.classList.add("show");
+      // 如果在 collapse 裡，展開，但不讓 toggle active
+      const collapse = a.closest(".collapse");
+      if (collapse) {
+        collapse.classList.add("show");
       }
     }
   });
 });
+
